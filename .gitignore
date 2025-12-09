@@ -1,0 +1,7 @@
+*.tmp
+*.log
+*.pid
+/var/
+/tmp/
+# test.sh
+.env
