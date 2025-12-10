@@ -20,8 +20,8 @@ Cкрипт на bash для мониторинга процесса test в с�
 1. Клонирование и настройка:
 ```bash
 # Клонируйте репозиторий
-git clone https://github.com/ваш-пользователь/monitoring-test.git
-cd monitoring-test
+git clone https://github.com/PASTER-G/Systemd-monitoring.git
+cd Systemd-monitoring
 
 # Создайте конфигурационный файл на основе примера
 cp .env.example .env
