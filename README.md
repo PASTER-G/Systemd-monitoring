@@ -1,6 +1,6 @@
 # Systemd Monitoring
 
-Cкрипт на bash для мониторинга процесса test в среде linux.
+Cкрипт на bash для мониторинга процесса test в среде Linux. Проект использует logrotate для ротации логов, архивируя логи при достижении критического размера log файла (10Mb).
 
 ## Структура проекта
 ```
@@ -36,7 +36,9 @@ sudo ./test.sh
 
 sudo bash ./install.sh
 ```
-Для удаления системы используйте `sudo bash ./uninstall.sh`
+*Для полного удаления проекта с хоста используйте `sudo bash ./uninstall.sh`*
+
+*После установки конфигурационный файл находится по пути: `/etc/monitoring-test/.env`*
 
 3. Проверка работоспособности:
 ```bash
@@ -46,8 +48,10 @@ sudo systemctl status monitor-test.timer
 # Просмотрите логи
 sudo journalctl -u monitor-test.service -f
 sudo cat /var/log/monitoring.log
+
+# Ротацию логов можно вызвать принудительно
+sudo logrotate -f /etc/logrotate.d/monitoring
 ```
-*После установки конфигурационный файл находится по пути: `/etc/monitoring-test/.env`*
 
 ## Преимущество **systemd.timer**
 - Не теряет задачи при перезагрузке системы
