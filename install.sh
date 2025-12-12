@@ -45,6 +45,29 @@ echo "Создание файла лога..."
 touch /var/log/monitoring.log
 chmod 644 /var/log/monitoring.log
 
+echo "Настройка ротации логов..."
+cat > /etc/logrotate.d/monitoring << 'EOF'
+/var/log/monitoring.log {
+    size 10M
+    rotate 5
+    compress
+    missingok
+    notifempty
+    create 644 root root
+}
+EOF
+
+cat > /etc/logrotate.d/test-process << 'EOF'
+/var/log/test-process.log {
+    size 10M
+    rotate 5
+    compress
+    missingok
+    notifempty
+    create 644 root root
+}
+EOF
+
 echo "Перезагрузка systemd..."
 systemctl daemon-reload
 

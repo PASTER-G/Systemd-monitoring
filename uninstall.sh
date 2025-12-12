@@ -35,7 +35,9 @@ echo ""
 read -p "Удалить конфигурацию и логи? (y/N): " -n 1 -r
 echo
 if [[ $REPLY =~ ^[Yy]$ ]]; then
+    rm -f /etc/logrotate.d/monitoring
+    rm -f /etc/logrotate.d/test-process
     rm -rf /etc/monitoring-test
-    rm -f /var/log/monitoring.log
+    rm -f /var/log/monitoring.log*
     echo "Конфигурация и логи удалены."
 fi
